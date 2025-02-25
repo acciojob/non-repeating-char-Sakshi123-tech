@@ -1,28 +1,15 @@
 function firstNonRepeatedChar(str) {
- // Write your code here\
-	let n = s.length;
-
-    // Iterate over each character in the string
-    for (let i = 0; i < n; ++i) {
-        let found = false;
-
-        // Check if the character repeats in the
-        // rest of the string
-        for (let j = 0; j < n; ++j) {
-            if (i !== j && s[i] === s[j]) {
-                found = true;
-                break;
-            }
-        }
-
-        // If character does not repeat, return it
-        if (found === false) {
-            return s[i];
-        }
-    }
-
-    // If no such character is found, return '$'
-    return '$';
+ // Write your code here
+	const charCount = new Map();
+	for(let char of str){
+		charCount.set(char, (charCount.get(char) || 0) + 1);
+	}
+	for(let char of str){
+		if(charCount.get(char) == 1){
+			return char;
+		}
+	}
+	return null;
 }
-const input = prompt("racecar");
+const input = prompt("Enter a string");
 alert(firstNonRepeatedChar(input)); 
